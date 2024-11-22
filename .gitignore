@@ -1,0 +1,3 @@
+*.pyc
+dataset/kitti_2048_cluster
+*.out
