@@ -38,7 +38,7 @@ def processData(pcd_path,set:str,threshold=2):
         tgt_overlappingRation = sum(gt_tgt_mask==1).numpy()/tgt.shape[0]
         if(src_overlappingRation<0.1 or tgt_overlappingRation<0.1):
             continue
-        dir = "./kitti_2048_cluster/{}".format(set)
+        dir = "./preprocessed_dataset/kitti_2048/{}".format(set)
         if not os.path.exists(dir):
             os.makedirs(dir)
 
@@ -81,12 +81,9 @@ if __name__ =="__main__":
         for file_name in os.listdir(overlap_dir):
             tmp_dirs.append(os.path.join(overlap_dir, file_name))
         random.shuffle(tmp_dirs)
-        tmp_train_dir = tmp_dirs[:300]
-        tmp_test_dir = tmp_dirs[300:450]
+        tmp_train_dir = tmp_dirs[:400]
+       
         train_pcd_path.extend(tmp_train_dir)
-        test_pcd_path.extend(tmp_test_dir)
-    for case in ("test","train"):
-        if(case=="test"):
-            processData(test_pcd_path,"test")
-        else:
-            processData(train_pcd_path,"train")
+        
+   
+    processData(train_pcd_path,"train")

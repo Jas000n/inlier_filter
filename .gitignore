@@ -1,3 +1,5 @@
 *.pyc
 dataset/kitti_2048_cluster
 *.out
+dataset/preprocessed_dataset
+weights
